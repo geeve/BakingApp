@@ -1,5 +1,7 @@
 package com.example.android.bakingapp.data;
 
+import android.net.Uri;
+
 /**
  * Created by Administrator on 2017/11/18 0018.
  * com.example.android.bakingapp.data,BakingApp
@@ -37,4 +39,5 @@ public class Contract {
 
         public static final String JSON_RESPONSE_IMGE = "image";
     }
+
 }

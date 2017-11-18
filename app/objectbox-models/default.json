@@ -1,0 +1,112 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:1048081664275712799",
+      "lastPropertyId": "5:150467278826987428",
+      "name": "IngredientModel",
+      "properties": [
+        {
+          "id": "1:8555595728618802500",
+          "name": "id"
+        },
+        {
+          "id": "2:8965873100128340578",
+          "name": "mIngredientQuantity"
+        },
+        {
+          "id": "3:232519626521540653",
+          "name": "mIngredientMeasure"
+        },
+        {
+          "id": "4:6804117375323359838",
+          "name": "mIngredients"
+        },
+        {
+          "id": "5:150467278826987428",
+          "indexId": "1:8134908915525791079",
+          "name": "recipesId"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "2:8294120100060500369",
+      "lastPropertyId": "5:7361220405653639216",
+      "name": "RecipeModel",
+      "properties": [
+        {
+          "id": "1:6655481191989857993",
+          "name": "id"
+        },
+        {
+          "id": "2:6650287240902684948",
+          "name": "mRecipeId"
+        },
+        {
+          "id": "3:8739012330512745126",
+          "name": "mRecipName"
+        },
+        {
+          "id": "4:5054749065932495453",
+          "name": "mRecipeServings"
+        },
+        {
+          "id": "5:7361220405653639216",
+          "name": "mRecipeImage"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "3:7697300986739484793",
+      "lastPropertyId": "7:7606536276373988185",
+      "name": "RecipeStepModel",
+      "properties": [
+        {
+          "id": "1:3896682699340596895",
+          "name": "id"
+        },
+        {
+          "id": "2:1314123109975685909",
+          "name": "mStepId"
+        },
+        {
+          "id": "3:3062489622528662653",
+          "name": "mStepShortDescription"
+        },
+        {
+          "id": "4:4269631827931378970",
+          "name": "mStepDescription"
+        },
+        {
+          "id": "5:8379505721468986716",
+          "name": "mStepVideoURL"
+        },
+        {
+          "id": "6:5283245525953984105",
+          "name": "mStepThumbnailURL"
+        },
+        {
+          "id": "7:7606536276373988185",
+          "indexId": "2:5139195896078724360",
+          "name": "recipesId"
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "3:7697300986739484793",
+  "lastIndexId": "2:5139195896078724360",
+  "lastRelationId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 4,
+  "modelVersionParserMinimum": 4,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}
