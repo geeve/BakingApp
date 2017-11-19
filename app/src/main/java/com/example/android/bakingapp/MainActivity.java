@@ -15,8 +15,9 @@ public class MainActivity extends AppCompatActivity implements RecipeListFragmen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        initView();
         RecipeSyncUtil.initialize(this);
+        initView();
+
     }
 
     private void initView(){

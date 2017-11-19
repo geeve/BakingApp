@@ -41,20 +41,20 @@ public class RecipeDbHelper extends SQLiteOpenHelper {
                 "CREATE TABLE " + RecipeContract.IngredientEntry.TABLE_NAME + "(" +
                         RecipeContract.IngredientEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "+
                         RecipeContract.IngredientEntry.COLUMN_RECIPE_ID + " INTEGER NOT NULL, " +
-                        RecipeContract.IngredientEntry.COLUMN_INGREDIENT_QUANTITY + " INTEGER NOT NULL," +
-                        RecipeContract.IngredientEntry.COLUMN_INGREDIENT_MEASURE + "TEXT, " +
+                        RecipeContract.IngredientEntry.COLUMN_INGREDIENT_QUANTITY + " FLOAT NOT NULL, " +
+                        RecipeContract.IngredientEntry.COLUMN_INGREDIENT_MEASURE + " TEXT, " +
                         RecipeContract.IngredientEntry.COLUMN_INGREDIENT_INGREDIENT_CONTENT + " TEXT);";
         db.execSQL(SQL_CREATE_INGREDIENT_TABLE);
 
         final String SQL_CREATE_STEPS_TABLE =
                 "CREATE TABLE " + RecipeContract.StepEntry.TABLE_NAME + "(" +
                         RecipeContract.StepEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                        RecipeContract.StepEntry.COLUMN_RECIPE_ID + "INTEGER NOT NULL, "+
-                        RecipeContract.StepEntry.COLUMN_STEPS_ID + "INTEGER NOT NULL, "+
-                        RecipeContract.StepEntry.COLUMN_STEPS_SHORT_DESCRIPTION + "TEXT, "+
-                        RecipeContract.StepEntry.COLUMN_STEPS_DESCRIPTION + "TEXT, " +
-                        RecipeContract.StepEntry.COLUMN_STEPS_VIDEO_URL + "TEXT, " +
-                        RecipeContract.StepEntry.COLUMN_STEPS_THUMBNAIL_URL + "TEXT);";
+                        RecipeContract.StepEntry.COLUMN_RECIPE_ID + " INTEGER NOT NULL, "+
+                        RecipeContract.StepEntry.COLUMN_STEPS_ID + " INTEGER NOT NULL, "+
+                        RecipeContract.StepEntry.COLUMN_STEPS_SHORT_DESCRIPTION + " TEXT, "+
+                        RecipeContract.StepEntry.COLUMN_STEPS_DESCRIPTION + " TEXT, " +
+                        RecipeContract.StepEntry.COLUMN_STEPS_VIDEO_URL + " TEXT, " +
+                        RecipeContract.StepEntry.COLUMN_STEPS_THUMBNAIL_URL + " TEXT);";
 
         db.execSQL(SQL_CREATE_STEPS_TABLE);
     }

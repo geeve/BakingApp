@@ -32,7 +32,8 @@ public class NetWorkUtils {
 
     private static final String LOG_TAG = NetWorkUtils.class.getSimpleName();
 
-    public static final String BASE_REQUEST_URL="http://go.udacity.com/android-baking-app-json";
+    public static final String BASE_REQUEST_URL="https://gist.githubusercontent.com/Parorisim/121ba85695d4211fcd596e7d4583e492/raw/6ddafa1626c7e8a861b586fd863a31847c50baa6/android-baking-app.json";
+    //"http://go.udacity.com/android-baking-app-json";
 
 
     /***
@@ -46,7 +47,7 @@ public class NetWorkUtils {
         if(TextUtils.isEmpty(jsonResponse)){
            return null;
         }
-
+        Log.v(LOG_TAG,jsonResponse);
         ArrayList<RecipeModel> recipeList = new ArrayList<>();
 
         JSONArray arrayJson = new JSONArray(jsonResponse);

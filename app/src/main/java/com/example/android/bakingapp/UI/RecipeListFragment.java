@@ -88,7 +88,6 @@ public class RecipeListFragment extends Fragment implements LoaderManager.Loader
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.fragment_recipe_list_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
         mRecyclerView.setAdapter(mRecipeAdapter);
-        getLoaderManager().initLoader(LOAD_REQUEST_CODE,null,this);
         return rootView;
     }
 
@@ -108,6 +107,7 @@ public class RecipeListFragment extends Fragment implements LoaderManager.Loader
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
         }
+        getLoaderManager().initLoader(LOAD_REQUEST_CODE,null,this).forceLoad();
     }
 
     @Override

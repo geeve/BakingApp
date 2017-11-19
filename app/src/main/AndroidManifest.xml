@@ -18,10 +18,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <provider
-            android:authorities="com.example.android.bakingapp"
             android:name=".data.RecipeProvider"
-            android:exported="false"/>
+            android:authorities="com.example.android.bakingapp"
+            android:exported="false" />
+
+        <service
+            android:name=".sync.RecipeSyncIntentService"
+            android:exported="false" />
+
+        <activity android:name=".RecipeActivity"></activity>
     </application>
 
 </manifest>

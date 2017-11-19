@@ -13,7 +13,7 @@ public class IngredientModel {
     /**
      * 佐料用量
      */
-    private int mIngredientQuantity;
+    private float mIngredientQuantity;
 
     /**
      * 用量单位
@@ -37,7 +37,7 @@ public class IngredientModel {
         this.mIngredients = ingredients;
     }
 
-    public int getmIngredientQuantity() {
+    public float getmIngredientQuantity() {
         return mIngredientQuantity;
     }
 

@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 /**
  * Created by Administrator on 2017/11/18 0018.
@@ -114,6 +115,7 @@ public class RecipeProvider extends ContentProvider {
             default:
                 return super.bulkInsert(uri, values);
         }
+        Log.v("Provider insert:"," "+rowInsert);
         return rowInsert;
     }
 
