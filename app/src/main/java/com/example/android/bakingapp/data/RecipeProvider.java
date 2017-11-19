@@ -120,7 +120,71 @@ public class RecipeProvider extends ContentProvider {
     @Nullable
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
-        return null;
+        SQLiteDatabase db = mRecipeDbHelper.getReadableDatabase();
+        int match = sUriMatcher.match(uri);
+        Cursor cursor;
+        switch (match){
+            case CODE_RECIPE:
+                cursor = db.query(RecipeContract.RecipeEntry.TABLE_NAME,
+                        projection,
+                        selection,
+                        selectionArgs,
+                        null,
+                        null,
+                        sortOrder);
+                break;
+            case CODE_RECIPE_WITH_ID:
+                cursor = db.query(RecipeContract.RecipeEntry.TABLE_NAME,
+                        projection,
+                        RecipeContract.RecipeEntry.COLUMN_RECIPE_ID + "=?",
+                        new String[]{uri.getLastPathSegment()},
+                        null,
+                        null,
+                        sortOrder);
+                break;
+            case CODE_INGREDIENT:
+                cursor = db.query(RecipeContract.IngredientEntry.TABLE_NAME,
+                        projection,
+                        selection,
+                        selectionArgs,
+                        null,
+                        null,
+                        sortOrder);
+                break;
+            /**根据RecipeId查询当食谱下的佐料*/
+            case CODE_INGREDIENT_WITH_ID:
+                cursor = db.query(RecipeContract.IngredientEntry.TABLE_NAME,
+                        projection,
+                        RecipeContract.IngredientEntry.COLUMN_RECIPE_ID + "=?",
+                        new String[]{uri.getLastPathSegment()},
+                        null,
+                        null,
+                        sortOrder);
+                break;
+            case CODE_STEPS:
+                cursor = db.query(RecipeContract.StepEntry.TABLE_NAME,
+                        projection,
+                        selection,
+                        selectionArgs,
+                        null,
+                        null,
+                        sortOrder);
+                break;
+            /**根据RecipeId查询当食谱下的步骤*/
+            case CODE_STEP_WITH_ID:
+                cursor = db.query(RecipeContract.StepEntry.TABLE_NAME,
+                        projection,
+                        RecipeContract.StepEntry.COLUMN_RECIPE_ID + "=?",
+                        new String[]{uri.getLastPathSegment()},
+                        null,
+                        null,
+                        sortOrder);
+                break;
+            default:
+                throw new UnsupportedOperationException("Unkown Uri:" + uri);
+        }
+        cursor.setNotificationUri(getContext().getContentResolver(),uri);
+        return cursor;
     }
 
     @Nullable

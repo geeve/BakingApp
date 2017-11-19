@@ -1,14 +1,26 @@
 package com.example.android.bakingapp.UI;
 
+import android.content.ContentResolver;
 import android.content.Context;
+import android.database.CharArrayBuffer;
+import android.database.ContentObserver;
+import android.database.Cursor;
+import android.database.DataSetObserver;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.android.bakingapp.R;
+import com.example.android.bakingapp.data.RecipeContract;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,17 +30,24 @@ import com.example.android.bakingapp.R;
  * Use the {@link RecipeListFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class RecipeListFragment extends Fragment {
+public class RecipeListFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor>{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+    private static final int LOAD_REQUEST_CODE = 1;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+
+    private RecipeListAdapter mRecipeAdapter;
+
+    private RecyclerView mRecyclerView;
 
     public RecipeListFragment() {
         // Required empty public constructor
@@ -43,7 +62,7 @@ public class RecipeListFragment extends Fragment {
      * @return A new instance of fragment RecipeListFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static RecipeListFragment newInstance(String param1, String param2) {
+    public static RecipeListFragment newInstance(@Nullable String param1,@Nullable String param2) {
         RecipeListFragment fragment = new RecipeListFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
@@ -55,6 +74,7 @@ public class RecipeListFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mRecipeAdapter = new RecipeListAdapter(getContext());
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -64,8 +84,12 @@ public class RecipeListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_recipe_list, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_recipe_list, container, false);
+        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.fragment_recipe_list_view);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
+        mRecyclerView.setAdapter(mRecipeAdapter);
+        getLoaderManager().initLoader(LOAD_REQUEST_CODE,null,this);
+        return rootView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -90,6 +114,26 @@ public class RecipeListFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        return new CursorLoader(getContext(),
+                RecipeContract.RecipeEntry.CONTENT_URI,
+                null,
+                null,
+                null,
+                null);
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+        mRecipeAdapter.swapData(data);
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+        mRecipeAdapter.swapData(null);
     }
 
     /**

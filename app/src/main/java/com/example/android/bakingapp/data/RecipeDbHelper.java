@@ -38,7 +38,8 @@ public class RecipeDbHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_RECIPE_TABLE);
 
         final String SQL_CREATE_INGREDIENT_TABLE =
-                "CREATE TABLE " + RecipeContract.IngredientEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "+
+                "CREATE TABLE " + RecipeContract.IngredientEntry.TABLE_NAME + "(" +
+                        RecipeContract.IngredientEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "+
                         RecipeContract.IngredientEntry.COLUMN_RECIPE_ID + " INTEGER NOT NULL, " +
                         RecipeContract.IngredientEntry.COLUMN_INGREDIENT_QUANTITY + " INTEGER NOT NULL," +
                         RecipeContract.IngredientEntry.COLUMN_INGREDIENT_MEASURE + "TEXT, " +
@@ -46,7 +47,8 @@ public class RecipeDbHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_INGREDIENT_TABLE);
 
         final String SQL_CREATE_STEPS_TABLE =
-                "CREATE TABLE " + RecipeContract.StepEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "CREATE TABLE " + RecipeContract.StepEntry.TABLE_NAME + "(" +
+                        RecipeContract.StepEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         RecipeContract.StepEntry.COLUMN_RECIPE_ID + "INTEGER NOT NULL, "+
                         RecipeContract.StepEntry.COLUMN_STEPS_ID + "INTEGER NOT NULL, "+
                         RecipeContract.StepEntry.COLUMN_STEPS_SHORT_DESCRIPTION + "TEXT, "+

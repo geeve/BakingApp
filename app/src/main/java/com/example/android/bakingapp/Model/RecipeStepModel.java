@@ -49,4 +49,44 @@ public class RecipeStepModel {
         this.mStepThumbnailURL = stepThumbnailUrl;
         this.mStepVideoURL = videoUrl;
     }
+
+    public int getmStepId() {
+        return mStepId;
+    }
+
+    public void setmStepId(int mStepId) {
+        this.mStepId = mStepId;
+    }
+
+    public String getmStepShortDescription() {
+        return mStepShortDescription;
+    }
+
+    public void setmStepShortDescription(String mStepShortDescription) {
+        this.mStepShortDescription = mStepShortDescription;
+    }
+
+    public String getmStepDescription() {
+        return mStepDescription;
+    }
+
+    public void setmStepDescription(String mStepDescription) {
+        this.mStepDescription = mStepDescription;
+    }
+
+    public String getmStepVideoURL() {
+        return mStepVideoURL;
+    }
+
+    public void setmStepVideoURL(String mStepVideoURL) {
+        this.mStepVideoURL = mStepVideoURL;
+    }
+
+    public String getmStepThumbnailURL() {
+        return mStepThumbnailURL;
+    }
+
+    public void setmStepThumbnailURL(String mStepThumbnailURL) {
+        this.mStepThumbnailURL = mStepThumbnailURL;
+    }
 }
