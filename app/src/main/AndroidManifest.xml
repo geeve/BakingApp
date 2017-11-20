@@ -28,7 +28,8 @@
             android:name=".sync.RecipeSyncIntentService"
             android:exported="false" />
 
-        <activity android:name=".RecipeActivity"></activity>
+        <activity android:name=".RecipeActivity" />
+        <activity android:name=".StepDescriptionActivity"></activity>
     </application>
 
 </manifest>
