@@ -51,7 +51,7 @@ public class StepInstructFragment extends Fragment {
 
     private String mStepVideoUrl;
     private String mStepDescription;
-
+    private SimpleExoPlayer mPlayer;
 
     @BindView(R.id.step_video_exoplayer)
     SimpleExoPlayerView mSimpleExoPlayerView;
@@ -125,7 +125,6 @@ public class StepInstructFragment extends Fragment {
     private void initExoplayer(){
 
         // 1. Create a default TrackSelector
-        Handler mainHandler = new Handler();
         BandwidthMeter bandwidthMeter = new DefaultBandwidthMeter();
         TrackSelection.Factory videoTrackSelectionFactory = new AdaptiveVideoTrackSelection.Factory(bandwidthMeter);
         TrackSelector trackSelector = new DefaultTrackSelector( videoTrackSelectionFactory);
@@ -134,10 +133,10 @@ public class StepInstructFragment extends Fragment {
         LoadControl loadControl = new DefaultLoadControl();
 
         // 3. Create the player
-        SimpleExoPlayer player = ExoPlayerFactory.newSimpleInstance(getContext(), trackSelector, loadControl);
+        mPlayer = ExoPlayerFactory.newSimpleInstance(getContext(), trackSelector, loadControl);
 
 
-        mSimpleExoPlayerView.setPlayer(player);
+        mSimpleExoPlayerView.setPlayer(mPlayer);
 
         // Measures bandwidth during playback. Can be null if not required.
         DefaultBandwidthMeter defaultBandwidthMeter = new DefaultBandwidthMeter();
@@ -149,7 +148,7 @@ public class StepInstructFragment extends Fragment {
         // This is the MediaSource representing the media to be played.
         MediaSource videoSource = new ExtractorMediaSource(Uri.parse(mStepVideoUrl), dataSourceFactory, extractorsFactory, null, null);
         // Prepare the player with the source.
-        player.prepare(videoSource);
+        mPlayer.prepare(videoSource);
 
     }
 

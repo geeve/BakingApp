@@ -29,7 +29,6 @@ public class StepDescriptionActivity extends AppCompatActivity {
     private String mCurrentStepDescription;
     private Cursor mCursor;
 
-    private static final String FAKE_VALE = "FAKE";
 
     private static final String LOG_TAG = StepDescriptionActivity.class.getSimpleName();
 
