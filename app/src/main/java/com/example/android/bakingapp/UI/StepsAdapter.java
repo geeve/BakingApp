@@ -30,9 +30,10 @@ public class StepsAdapter extends RecyclerView.Adapter<StepsAdapter.SetpViewHold
     public static final String CURRENT_STEP_ID = "current_step_id";
 
 
-    public StepsAdapter(Context context) {
+    public StepsAdapter(Context context,StepsAdapterOnClickHandler handler) {
         super();
         this.mContext = context;
+        this.mClickHander = handler;
     }
 
     @Override
@@ -56,16 +57,12 @@ public class StepsAdapter extends RecyclerView.Adapter<StepsAdapter.SetpViewHold
 
         holder.stepView.setText(mCursor.getString(mCursor.getColumnIndex(RecipeContract.StepEntry.COLUMN_STEPS_SHORT_DESCRIPTION)));
         holder.stepView.setTag(b);
-        holder.stepView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Bundle bundle = (Bundle) holder.stepView.getTag();
-                Intent intent = new Intent(mContext, StepDescriptionActivity.class);
-                intent.putExtras(bundle);
+    }
 
-                mContext.startActivity(intent);
-            }
-        });
+    /**通过接口来实现点击步骤，显示步骤详情*/
+    final private StepsAdapterOnClickHandler mClickHander;
+    public interface StepsAdapterOnClickHandler{
+        void onClick(Bundle bundle);
     }
 
     @Override
@@ -81,13 +78,22 @@ public class StepsAdapter extends RecyclerView.Adapter<StepsAdapter.SetpViewHold
         this.mCursor = cursor;
         notifyDataSetChanged();
     }
-    class SetpViewHolder extends RecyclerView.ViewHolder{
+
+    /**实现View.OnClickListener接口，实现点击调用实现了StepsAdapterOnclickHandler接口的对象中的onClick方法*/
+    class SetpViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         @BindView(R.id.step_list_item)
         TextView stepView;
         public SetpViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            Bundle b = (Bundle) stepView.getTag();
+            mClickHander.onClick(b);
         }
     }
 }

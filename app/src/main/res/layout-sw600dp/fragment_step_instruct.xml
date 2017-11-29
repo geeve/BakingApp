@@ -2,6 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_vertical_margin"
     tools:context="com.example.android.bakingapp.UI.StepInstructFragment">
 
     <LinearLayout
@@ -12,15 +14,15 @@
             android:id="@+id/step_video_exoplayer"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"/>
+            android:layout_weight="2.5"/>
 
         <TextView
             android:id="@+id/step_description"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
             tools:text="The Step Description!"/>
 
     </LinearLayout>

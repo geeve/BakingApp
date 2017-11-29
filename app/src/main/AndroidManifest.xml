@@ -29,7 +29,7 @@
             android:exported="false" />
 
         <activity android:name=".RecipeActivity" />
-        <activity android:name=".StepDescriptionActivity"></activity>
+        <activity android:name=".StepDescriptionActivity" />
     </application>
 
 </manifest>

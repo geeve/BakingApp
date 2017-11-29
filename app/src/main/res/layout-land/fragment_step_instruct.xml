@@ -11,18 +11,15 @@
         <com.google.android.exoplayer2.ui.SimpleExoPlayerView
             android:id="@+id/step_video_exoplayer"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
-
+            android:layout_height="match_parent"/>
         <TextView
             android:id="@+id/step_description"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="match_parent"
             android:gravity="center_vertical"
+            android:visibility="gone"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
             tools:text="The Step Description!"/>
-
     </LinearLayout>
 
 </FrameLayout>

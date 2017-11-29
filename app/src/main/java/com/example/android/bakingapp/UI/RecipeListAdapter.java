@@ -63,7 +63,6 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
         holder.recipeImgView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO:进入详情界面
                 Intent intent = new Intent(mContext, RecipeActivity.class);
                 intent.putExtra(RecipeContract.RecipeEntry.COLUMN_RECIPE_ID,(int)holder.recipeImgView.getTag());
                 intent.putExtra(RecipeContract.RecipeEntry.COLUMN_RECIPE_NAME,holder.recipeNameView.getText());

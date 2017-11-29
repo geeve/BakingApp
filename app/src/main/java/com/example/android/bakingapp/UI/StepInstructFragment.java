@@ -99,7 +99,7 @@ public class StepInstructFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_step_instruct,container,false);
         unbinder = ButterKnife.bind(this,view);
 
-        return inflater.inflate(R.layout.fragment_step_instruct, container, false);
+        return view;
     }
 
     @Override
@@ -113,6 +113,10 @@ public class StepInstructFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+        if(mPlayer != null) {
+            mPlayer.release();
+            mPlayer = null;
+        }
     }
 
     /**根据内容更新UI显示*/
