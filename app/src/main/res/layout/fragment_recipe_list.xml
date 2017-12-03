@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primaryBackgroundColor"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.android.bakingapp.UI.RecipeListFragment">
 
@@ -9,6 +10,7 @@
         android:id="@+id/fragment_recipe_list_view"
         app:layoutManager="LinearLayoutManager"
         android:orientation="vertical"
+        android:paddingTop="@dimen/activity_horizontal_margin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

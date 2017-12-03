@@ -39,7 +39,7 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.In
     @Override
     public void onBindViewHolder(IngredientViewHolder holder, int position) {
         mCursor.moveToPosition(position);
-        holder.ingredientView.setText(mCursor.getString(mCursor.getColumnIndex(RecipeContract.IngredientEntry.COLUMN_INGREDIENT_INGREDIENT_CONTENT)) +
+        holder.ingredientView.setText("• " +mCursor.getString(mCursor.getColumnIndex(RecipeContract.IngredientEntry.COLUMN_INGREDIENT_INGREDIENT_CONTENT)) +
         ":" + mCursor.getFloat(mCursor.getColumnIndex(RecipeContract.IngredientEntry.COLUMN_INGREDIENT_QUANTITY)) +
         " " +mCursor.getString(mCursor.getColumnIndex(RecipeContract.IngredientEntry.COLUMN_INGREDIENT_MEASURE)));
     }

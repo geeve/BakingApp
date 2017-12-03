@@ -2,21 +2,22 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
+    android:background="@color/primaryTextColor"
+    android:layout_marginBottom="@dimen/activity_horizontal_margin"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <ImageView
         android:id="@+id/recipe_item_image"
         android:layout_width="match_parent"
         android:src="@drawable/nutella_pie"
+        android:paddingTop="@dimen/widget_margin"
         android:scaleType="fitXY"
-        android:layout_height="0dp"
-        android:layout_weight="5"/>
+        android:layout_height="180dp"/>
     <TextView
         android:id="@+id/recipe_item_name"
         tools:text="Recipe Name"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:gravity="center_vertical"/>
 </LinearLayout>

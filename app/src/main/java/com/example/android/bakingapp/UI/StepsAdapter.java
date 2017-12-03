@@ -55,7 +55,7 @@ public class StepsAdapter extends RecyclerView.Adapter<StepsAdapter.SetpViewHold
         b.putString(CURRENT_RECIPE_ID,currentRecipeId);
         b.putString(CURRENT_STEP_ID,currentStepId);
 
-        holder.stepView.setText(mCursor.getString(mCursor.getColumnIndex(RecipeContract.StepEntry.COLUMN_STEPS_SHORT_DESCRIPTION)));
+        holder.stepView.setText(String.valueOf(position) + "." + mCursor.getString(mCursor.getColumnIndex(RecipeContract.StepEntry.COLUMN_STEPS_SHORT_DESCRIPTION)));
         holder.stepView.setTag(b);
     }
 
@@ -84,7 +84,7 @@ public class StepsAdapter extends RecyclerView.Adapter<StepsAdapter.SetpViewHold
 
         @BindView(R.id.step_list_item)
         TextView stepView;
-        public SetpViewHolder(View itemView) {
+        private SetpViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);
             itemView.setOnClickListener(this);

@@ -31,7 +31,7 @@ public class IngredientModel {
      * @param measure  单位
      * @param ingredients  用料
      */
-    public IngredientModel(int quantity,String measure,String ingredients) {
+    public IngredientModel(float quantity,String measure,String ingredients) {
         this.mIngredientMeasure = measure;
         this.mIngredientQuantity = quantity;
         this.mIngredients = ingredients;
